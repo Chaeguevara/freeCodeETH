@@ -1,15 +1,60 @@
 {
 	"compiler": {
-		"version": "0.8.7+commit.e28d00a7"
+		"version": "0.6.11-nightly.2020.6.25+commit.48dd3634"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "addressToAmountFunded",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "fund",
 				"outputs": [],
 				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getVersion",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -28,7 +73,7 @@
 		"compilationTarget": {
 			"contracts/FundMe.sol": "FundMe"
 		},
-		"evmVersion": "london",
+		"evmVersion": "istanbul",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -40,12 +85,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/FundMe.sol": {
-			"keccak256": "0x8634b3cabf89fafc053927e97d341f41a6c02096a19f071ef61f57782f1b804e",
+		"@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol": {
+			"keccak256": "0x8895ce4f46aba18ee3cdb7b1d180f79edb868225781f60993c7b2181e2ee2583",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a83b9934191ce85285eb7ccbf59dd10f88e774f2b36c6d84a24b450416aa499a",
-				"dweb:/ipfs/QmTrZ7RQZc4mSTUaMHnqUQ4ybRumSVajjBm9naathfycVt"
+				"bzz-raw://4472c14df5f311d7a2eff1dfa55d9b4d39a21b0a0ff905fcbbf6913551086a4c",
+				"dweb:/ipfs/QmQvwFk1SBaLMm4pmZCz7UEhfaXM8kUWu5VG71VFFuMxjF"
+			]
+		},
+		"contracts/FundMe.sol": {
+			"keccak256": "0x80f310f29943213ba319af85fb0889e27a02224c330e423ade3e1234a9a3beb2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b3e8563548bdf7f9c846b79ca1a709b1dab97648602f6e566e761326807a3239",
+				"dweb:/ipfs/QmSmDX5rssD9qwXtQWDcjDSnMvNPJgXjohMgSFAyEncTf6"
 			]
 		}
 	},
