@@ -1,0 +1,54 @@
+{
+	"compiler": {
+		"version": "0.6.6+commit.6c089d02"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "overflow",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Overflow.sol": "Overflow"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Overflow.sol": {
+			"keccak256": "0xa38ba3b24f678938f1ed806218abea9dd7f950385ab996ac8f22ce17743c546c",
+			"urls": [
+				"bzz-raw://00260cd1f42f95d851255f1a10957ef9034c4c06a1a84f8e8b77d99c2ef4ece1",
+				"dweb:/ipfs/QmTPdQgsKJ5mj1fd36LEwVhHs5CEMZwdaSqHt1tNMG7NBe"
+			]
+		}
+	},
+	"version": 1
+}

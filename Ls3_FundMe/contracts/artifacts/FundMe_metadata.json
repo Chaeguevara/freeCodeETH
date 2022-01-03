@@ -1,10 +1,15 @@
 {
 	"compiler": {
-		"version": "0.6.11-nightly.2020.6.25+commit.48dd3634"
+		"version": "0.6.6+commit.6c089d02"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
 			{
 				"inputs": [
 					{
@@ -32,6 +37,25 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "ethAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "getConversionRate",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "getPrice",
 				"outputs": [
@@ -56,17 +80,33 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
-			"kind": "dev",
-			"methods": {},
-			"version": 1
+			"methods": {}
 		},
 		"userdoc": {
-			"kind": "user",
-			"methods": {},
-			"version": 1
+			"methods": {}
 		}
 	},
 	"settings": {
@@ -87,18 +127,23 @@
 	"sources": {
 		"@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol": {
 			"keccak256": "0x8895ce4f46aba18ee3cdb7b1d180f79edb868225781f60993c7b2181e2ee2583",
-			"license": "MIT",
 			"urls": [
 				"bzz-raw://4472c14df5f311d7a2eff1dfa55d9b4d39a21b0a0ff905fcbbf6913551086a4c",
 				"dweb:/ipfs/QmQvwFk1SBaLMm4pmZCz7UEhfaXM8kUWu5VG71VFFuMxjF"
 			]
 		},
-		"contracts/FundMe.sol": {
-			"keccak256": "0x80f310f29943213ba319af85fb0889e27a02224c330e423ade3e1234a9a3beb2",
-			"license": "MIT",
+		"@chainlink/contracts/src/v0.6/vendor/SafeMathChainlink.sol": {
+			"keccak256": "0x105f5e9491f3d0bbdd4f1c7627eb839d69b944bfd803028a01cc083597692c1f",
 			"urls": [
-				"bzz-raw://b3e8563548bdf7f9c846b79ca1a709b1dab97648602f6e566e761326807a3239",
-				"dweb:/ipfs/QmSmDX5rssD9qwXtQWDcjDSnMvNPJgXjohMgSFAyEncTf6"
+				"bzz-raw://ec45a2748a024a947a921183d4102d5e206808588501d85ddc4f5668a009bc73",
+				"dweb:/ipfs/QmRNAMpq7LdWFnJ7wWKGbUuAcURaGSS42PMxtQ4vjrHmp9"
+			]
+		},
+		"contracts/FundMe.sol": {
+			"keccak256": "0xeb3cf27e2fbd7509931899cb185b7f15e98ac463f4959e6c710ecf6766bb0c0f",
+			"urls": [
+				"bzz-raw://1db344b44198c05f680a6efa738b314d924939bc5918c5afc6be687c6de46e29",
+				"dweb:/ipfs/QmPM5ARZZygrjkVqeDKY5eBxeryqjDmYkJjZumHEAARd7T"
 			]
 		}
 	},

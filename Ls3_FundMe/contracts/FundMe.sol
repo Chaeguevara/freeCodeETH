@@ -3,12 +3,22 @@
 pragma solidity >=0.6.6 <0.9.0;
 
 import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
+import "@chainlink/contracts/src/v0.6/vendor/SafeMathChainlink.sol";
 
 contract FundMe{
+    using SafeMathChainlink for uint256;
 
     mapping(address => uint256) public addressToAmountFunded;
+    address public owner;
+    constructor() public {
+        owner = msg.sender;
+    }
 
     function fund() public payable{
+        // $50
+        uint256 minimumUSD = 50 * 10 ** 18;
+        // 1gwei < $50
+        require(getConversionRate(msg.value) >= minimumUSD, "You need to spend more ETH!");
         addressToAmountFunded[msg.sender] += msg.value;
         // ETH -> USD Conversion Rate : From where?? Oracle Problem
     }
@@ -24,6 +34,22 @@ contract FundMe{
             ,int256 answer,,,
             
         ) = priceFeed.latestRoundData();
-        return uint256(answer);
+        return uint256(answer * 10000000000);
+    }
+
+
+    // 1000000000
+    function getConversionRate(uint256 ethAmount) public view returns (uint256){
+        uint256 ethPrice = getPrice();
+        uint256 ethAmountInUsd = (ethPrice * ethAmount) / 1000000000000000000;
+        return ethAmountInUsd;
+    }
+
+    
+
+    function withdraw() payable public{
+        require(msg.sender == owner);
+        msg.sender.transfer(address(this).balance);
+        //require msg.sender = owner
     }
 }
