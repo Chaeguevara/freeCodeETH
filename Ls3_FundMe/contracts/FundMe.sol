@@ -9,6 +9,7 @@ contract FundMe{
     using SafeMathChainlink for uint256;
 
     mapping(address => uint256) public addressToAmountFunded;
+    address[] public funders;
     address public owner;
     constructor() public {
         owner = msg.sender;
@@ -20,6 +21,7 @@ contract FundMe{
         // 1gwei < $50
         require(getConversionRate(msg.value) >= minimumUSD, "You need to spend more ETH!");
         addressToAmountFunded[msg.sender] += msg.value;
+        funders.push(msg.sender);
         // ETH -> USD Conversion Rate : From where?? Oracle Problem
     }
 
@@ -45,11 +47,18 @@ contract FundMe{
         return ethAmountInUsd;
     }
 
-    
-
-    function withdraw() payable public{
+    modifier onlyOwner{
         require(msg.sender == owner);
-        msg.sender.transfer(address(this).balance);
+        _;
+    }
+
+    function withdraw() payable onlyOwner public{
         //require msg.sender = owner
+        msg.sender.transfer(address(this).balance);
+        for(uint256 funderIndex=0; funderIndex < funders.length; funderIndex++){
+            address funder = funders[funderIndex];
+            addressToAmountFunded[funder] = 0;
+        }
+        funders = new address[](0);
     }
 }
