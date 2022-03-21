@@ -37,10 +37,10 @@ bytecode = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["evm"
 # get abi
 abi = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["abi"]
 
-#for connecting to ganash
-w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:8545"))
-chain_id = 1337
-my_address = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"
+#for connecting to rinkeby
+w3 = Web3(Web3.HTTPProvider("https://rinkeby.infura.io/v3/19ff456a41c5436dbc1d5caaa52d9ef2"))
+chain_id = 4
+my_address = "0xF7575c46eA44411e5181fc2ac913F04e5DFC487c"
 
 private_key = os.getenv("PRIVATE_KEY")
 
@@ -83,7 +83,7 @@ signed_store_txn=w3.eth.account.sign_transaction(
 #send transaction
 send_store_tx = w3.eth.send_raw_transaction(signed_store_txn.rawTransaction)
 #Wait for transacted 
-tx_receip=w3.eth.wait_for_transaction_receipt(send_store_tx)
+tx_receipt=w3.eth.wait_for_transaction_receipt(send_store_tx)
 print("Updated!")
 #show tx result
 print(simple_storage.functions.retrieve().call())
