@@ -2,7 +2,7 @@ from brownie import accounts,config,network,MockV3Aggregator
 from web3 import Web3
 
 DECIMALS=8
-STARTING_PRICE=2*(10**10)
+STARTING_PRICE=200000000000
 LOCAL_BLOCKCHAIN_ENVIRONMENTS=["development","ganache-local"]
 
 def get_account():
@@ -16,7 +16,7 @@ def deploy_mocks():
     print("Deply MockV3Aggregator...")
     if len(MockV3Aggregator) <= 0:
         print("deploying")
-        MockV3Aggregator.deploy(DECIMALS,Web3.toWei(STARTING_PRICE,"ether"),{"from":get_account()})
+        MockV3Aggregator.deploy(DECIMALS,STARTING_PRICE,{"from":get_account()})
     print("Mock deployed!")
 
     
