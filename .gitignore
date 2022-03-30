@@ -1,2 +1,3 @@
 #exclude swap file
 *.swp
+*.DS_Store
