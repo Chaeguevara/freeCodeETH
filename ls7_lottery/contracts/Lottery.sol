@@ -78,7 +78,7 @@ contract Lottery is Ownable, VRFConsumerBase{
     bytes32 requestId = requestRandomness(keyhash,fee);
   }
 
-  function fullfillRandomness(bytes32 _requestId, uint256 _randomness) internal override{
+  function fulfillRandomness(bytes32 _requestId, uint256 _randomness) internal override{
     require(lottery_state ==LOTTERY_STATE.CALCULATING_WINNER, "아직 !");
     require(_randomness>0, "랜덤값이 없음");
     uint256 indexOfWinner = _randomness % players.length;
