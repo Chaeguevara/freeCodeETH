@@ -1,5 +1,6 @@
-from scripts.helpful_scripts import get_account, get_contract
+from scripts.helpful_scripts import get_account, get_contract, fund_with_link
 from brownie import Lottery, network, config
+import time
 
 
 def deploy_lottery():
@@ -21,5 +22,36 @@ def deploy_lottery():
     print("Lottery Deployed!!")
 
 
+def start_lottery():
+    account=get_account()
+    lottery = Lottery[-1] #Latest 
+    starting_tx = lottery.startLottery({"from":account})
+    starting_tx.wait(1)
+    print("The Lottery is started!!")
+
+
+def enter_lottery():
+    account = get_account()
+    lottery = Lottery[-1]
+    value = lottery.getEntranceFee() + 100000000 #fail safe. 미니멈 값에 아주 소량 추가
+    tx = lottery.enter({"from":account, "value":value})
+    tx.wait(1)
+    print("You entered lottery!")
+
+
+def end_lottery():
+    account = get_account()
+    lottery = Lottery[-1]
+    tx = fund_with_link(lottery.address)
+    tx.wait(1)
+    ending_transaction = lottery.endLottery({"from":account})
+    ending_transaction.wait(1)
+    time.sleep(60) #random 계산될때까지 대기
+    print(f"{lottery.recentWinner()} is the new winner!")
+
+
 def main():
     deploy_lottery()
+    start_lottery()
+    enter_lottery()
+    end_lottery()
