@@ -15,7 +15,8 @@ contract Lottery is Ownable, VRFConsumerBase{
   AggregatorV3Interface internal ethUsdPriceFeed;
   uint256 public fee;
   bytes32 public keyhash;
-  
+  event RequestedRandomness(bytes32 requestId); // 일종의print 기 
+
   enum LOTTERY_STATE{
     OPEN,
     CLOSED,
@@ -76,6 +77,7 @@ contract Lottery is Ownable, VRFConsumerBase{
     lottery_state = LOTTERY_STATE.CALCULATING_WINNER;
     //random 값 request를 보냄
     bytes32 requestId = requestRandomness(keyhash,fee);
+    emit RequestedRandomness(requestId); // event를 내보낸다 --> python에서 읽는
   }
 
   function fulfillRandomness(bytes32 _requestId, uint256 _randomness) internal override{

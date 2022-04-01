@@ -20,6 +20,7 @@ def deploy_lottery():
             publish_source=config["networks"][network.show_active()].get("verify",False)
     )
     print("Lottery Deployed!!")
+    return lottery
 
 
 def start_lottery():
