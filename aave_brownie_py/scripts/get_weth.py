@@ -12,6 +12,7 @@ def get_weth():
     """
     #ABI
     #Address 사용
+    print("-----------ETH --> WETH ------------")
     account = get_account()
     weth = interface.IWeth(config["networks"][network.show_active()]["weth_token"])
     tx = weth.deposit({"from":account, "value": 0.1 * 10 ** 18})#10^18 == 1ETH        
