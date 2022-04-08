@@ -39,7 +39,7 @@ def main():
     #대출 후 데이터 확인 --> 담보, 대출 등 값을 확인하여 대출이 실행됬는지 확인
     get_borrowable_data(lending_pool,account)
     #대출 상환
-    repay_all(-1, lending_pool,account)
+    repay_all(Web3.toWei(amount_dai_to_borrow,"ether"), lending_pool,account)
     #마지막 값 검사
     get_borrowable_data(lending_pool,account)
     print(
