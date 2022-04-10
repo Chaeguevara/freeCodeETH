@@ -5,6 +5,12 @@ LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["hardhat","development","ganache","mainnet-fork
 OPENSEA_URL = "https://testnets.opensea.io/assets/{}/{}"
 BREED_MAPPING = {0: "PUG", 1: "SHIBA_INU", 2: "ST_BERNARD"}
 
+
+def get_breed(breed_number):
+    return BREED_MAPPING[breed_number]
+
+
+    
 def get_account(index=None,id=None):
     if index:
         return accounts[index]
@@ -14,7 +20,9 @@ def get_account(index=None,id=None):
         return accounts[0]
     return accounts.add(config["wallets"]["from_key"])
 
+
 contract_to_mock = {"link_token":LinkToken, "vrf_coordinator": VRFCoordinatorMock}
+
 
 def get_contract(contract_name):
     """
