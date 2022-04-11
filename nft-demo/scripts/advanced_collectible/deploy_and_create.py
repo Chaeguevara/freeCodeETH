@@ -11,6 +11,7 @@ def deploy_and_create():
             config["networks"][network.show_active()]["keyhash"],
             config["networks"][network.show_active()]["fee"],
             {"from":account},
+            publish_source=config["networks"][network.show_active()].get("verify"), # verify
             )
     fund_with_link(advanced_collectible.address)#link를 채워 넣음 --> random 호출
     creating_tx = advanced_collectible.createCollectible({"from":account})

@@ -20,14 +20,14 @@ breed_to_image_uri = {
 
 
 def main():
-    advanced_collectible = AdvancedCollectible[-1]
+    advanced_collectible = AdvancedCollectible[-1] #contract 가져옴
     number_of_advanced_collectibles = advanced_collectible.tokenCounter()
     print(f"현재까지 만든 collectible의 갯수는 {number_of_advanced_collectibles}")
     for token_id in range(number_of_advanced_collectibles):
         breed = get_breed(advanced_collectible.tokenIdToBreed(token_id))
         metadata_file_name = (
                 f"./metadata/{network.show_active()}/{token_id}-{breed}.json"
-        )#이미 metadata파일이 존재하는지 확
+        )#블록체인의 mapping내용을 보고, 로컬에 metadata가 존재하는지 확인 --> 없으면 새로 생성
         collectible_metadata = metadata_template
         if Path(metadata_file_name).exists():
             print(f"{metadata_file_name}이 존재합니다. 기존 파일을 지우거나 덮어쓰세요")
@@ -36,7 +36,7 @@ def main():
             collectible_metadata["name"] = breed
             collectible_metadata["description"] = f"An adorable {breed} pup!"
             image_path = "./img/" + breed.lower().replace("_","-")+".png"
-
+            #이미 IPFS에 업로드 되어있는 경우가 많아서, env에서 내용을 읽어 필요할떄만 업로드 
             image_uri = None
             if os.getenv("UPLOAD_IPFS") == "true":
                 image_uri = upload_to_ipfs(image_path)

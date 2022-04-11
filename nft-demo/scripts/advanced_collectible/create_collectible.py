@@ -9,4 +9,4 @@ def main():
     fund_with_link(advanced_collectible.address, amount=Web3.toWei(0.1,"ether"))
     creation_transaction = advanced_collectible.createCollectible({"from":account})
     creation_transaction.wait(1)
-    print("Collectile created!!")
+    print("Collectible created!!")
