@@ -91,7 +91,7 @@ contract TokenFarm is Ownable {
     }
 
 
-    function stakeToken(uint256 _amount, address _token) public {
+    function stakeTokens(uint256 _amount, address _token) public {
       require(_amount > 0, "Amount must be more than 0");
       require(tokenIsAllowed(_token), "Token is currently no allowed");
       IERC20(_token).transferFrom(msg.sender, address(this), _amount);
