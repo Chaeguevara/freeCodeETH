@@ -45,7 +45,7 @@ def add_allowed_tokens(token_farm, dict_of_allowed_tokens, account):
         set_tx.wait(1)
     return token_farm
 
-
+# config / build를 front_end에 보냄
 def update_front_end():
     # Send the build folder
     copy_folders_to_front_end("./build", "./front_end/src/chain-info")
@@ -65,4 +65,4 @@ def copy_folders_to_front_end(src, dest):
 
 
 def main():
-    deploy_token_farm_and_dapp_token(front_end_update=False)
+    deploy_token_farm_and_dapp_token(front_end_update=True)
